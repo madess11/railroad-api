@@ -3,7 +3,6 @@ import app from './app';
 import { logger } from './utils/logger';
 import { connectDB } from './configs/db';
 
-// Load environment variables
 dotenv.config();
 
 // Port definition

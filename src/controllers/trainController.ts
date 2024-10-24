@@ -27,6 +27,22 @@ export const getTrains = async (req: Request, res: Response) => {
     }
 };
 
+// Get a train by ID
+export const getTrain = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    try {
+        const train = await Train.findById(id);
+        if (!train) {
+            res.status(404).json({ message: 'Train not found' })
+            return
+        }
+        res.json(train);
+    } catch (err) {
+        res.status(500).json({ message: 'Error fetching train', error: err });
+    }
+};
+
 // Update a train (Admin only)
 export const updateTrain = async (req: Request, res: Response) => {
     try {
