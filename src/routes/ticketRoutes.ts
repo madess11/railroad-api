@@ -1,8 +1,8 @@
-// src/routes/ticketRoutes.ts
-
 import { Router } from 'express'
 import { bookTicket, getTickets, validateUserTicket } from '../controllers/ticketController'
 import { authMiddleware } from '../middlewares/authMiddleware'
+import { roleMiddleware } from '../middlewares/roleMiddleware'
+import { employeeMiddleware } from '../middlewares/employeeMiddleware'
 
 const router = Router()
 
@@ -78,7 +78,7 @@ router.get('/', authMiddleware, getTickets)
  * @swagger
  * /tickets/{id}/validate:
  *   put:
- *     summary: Valider un billet par ID (Admin seulement)
+ *     summary: Valider un billet par ID (Employé seulement)
  *     tags: [Tickets]
  *     security:
  *       - bearerAuth: []
@@ -95,6 +95,6 @@ router.get('/', authMiddleware, getTickets)
  *       404:
  *         description: Billet non trouvé
  */
-router.put('/:id/validate', authMiddleware, validateUserTicket)
+router.put('/:id/validate', [authMiddleware, employeeMiddleware], validateUserTicket)
 
 export default router

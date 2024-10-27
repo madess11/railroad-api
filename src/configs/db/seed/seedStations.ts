@@ -59,20 +59,7 @@ export const seedStationsAndTrains = async () => {
 
         const savedStations = await TrainStation.insertMany(stations) // Insert the fixtures
         console.log('Train Stations seeded successfully')
-
-        // // Map the saved station IDs to the train fixtures
-        // const savedStationsMap = savedStations.reduce((map, station) => {
-        //     map[station.name as string] = station._id
-        //     return map
-        // }, {})
-
-        // Update train fixtures with the saved station IDs
-        // const updatedTrains = trains.map(train => ({
-        //     ...train,
-        //     start_station: savedStationsMap[train.start_station],
-        //     end_station: savedStationsMap[train.end_station]
-        // }))
-
+           
         await Train.insertMany(trains) // Insert the updated train fixtures
         console.log('Trains seeded successfully')
     } catch (err) {

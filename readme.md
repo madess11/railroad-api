@@ -1,9 +1,11 @@
 # **RailRoad API**
 
 ## **Description**
+
 The RailRoad API is a REST API that allows users to view information about trains and stations, book tickets, and for employees to verify the validity of tickets. This API also manages authentication and authorization, allowing users to register, log in, and access different functionalities based on their roles (user, employee, or admin).
 
 ## **Features**
+
 - **User Management**: Create, read, update, and delete users with role-based restrictions.
 - **Train Management**: View, create, update, and delete train information (admin only).
 - **Station Management**: View, create, update, and delete train station information (admin only).
@@ -13,35 +15,43 @@ The RailRoad API is a REST API that allows users to view information about train
 - **Swagger Documentation**: Full API documentation is available via Swagger.
 
 ## **Technologies Used**
-- **Node.js** with **Express.js** or **Fastify.js**
+
+- **Node.js** with **Express.js**
 - **TypeScript** for type safety
 - **MongoDB** with **Mongoose** as the ORM
 - **JWT** for authentication
-- **Joi** or **Yup** for data validation
+- **Joi**  for data validation
 - **Swagger** for API documentation
 - **Multer** for image handling
 - **Sharp** for image resizing
+- **morgan** for logs
 
 ## **Requirements**
+
 Before starting, ensure that you have the following installed on your machine:
-- **Node.js** (version 16 or higher)
+
+- **Node.js** (version 20 or higher)
 - **MongoDB** (locally or via MongoDB Atlas)
 - **npm** or **yarn** for package management
 
 ## **Installation**
 
 1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/your-repo/railroad-api.git
+   git clone git@github.com:madess11/railroad-api.git
    cd railroad-api
    ```
 
 2. **Install dependencies**
    Using **npm**:
+
    ```bash
    npm install
    ```
+
    Or with **yarn**:
+
    ```bash
    yarn install
    ```
@@ -50,46 +60,44 @@ Before starting, ensure that you have the following installed on your machine:
    Create a `.env` file at the root of the project with the following variables:
 
    ```
-   PORT=5000
+   PORT=3000
    MONGO_URI=mongodb://localhost:27017/railroad
-   JWT_SECRET=supersecretkey
+   JWT_SECRET=secretkey
    ```
 
 4. **Run the application**
    Using **npm**:
+
+   ```bash
+   npm start
+   ```
+
    ```bash
    npm run dev
    ```
+
    Or with **yarn**:
+
    ```bash
    yarn dev
    ```
 
-   The API will be available at [http://localhost:5000](http://localhost:5000).
+2. The API will be available at \`<http://localhost:3000\`>.
 
-## **Main Endpoints**
+## Database Seeding
 
-### **Authentication**
-- `POST /auth/register`: Register a new user
-- `POST /auth/login`: Log in and receive a JWT token
+To seed your MongoDB database with initial data:
 
-### **Trains**
-- `GET /trains`: List all trains (available to all users)
-- `POST /trains`: Create a new train (admin only)
-- `PUT /trains/:id`: Update a train (admin only)
-- `DELETE /trains/:id`: Delete a train (admin only)
+ Run the seed script:
 
-### **Stations**
-- `GET /stations`: List all stations
-- `POST /stations`: Add a new station (admin only)
-- `PUT /stations/:id`: Update a station (admin only)
-- `DELETE /stations/:id`: Delete a station (admin only)
+   ```
+   npm run seed
+   ```
 
-### **Ticket Booking**
-- `POST /tickets/book`: Book a ticket
-- `POST /tickets/validate`: Validate a ticket (employee only)
+This will populate your database with predefined data for users, stations, trains, and tickets.
 
 ## **Testing**
+
 This API includes core functionality tests. To run the tests, use:
 
 ```bash
@@ -103,7 +111,9 @@ yarn test
 ```
 
 ## **Documentation**
+
 Full API documentation is available through Swagger. Once the app is running, you can access it at `/api-docs`.
 
-## **License**
-This project is licensed under the MIT License.
+## Contributing
+
+We welcome contributions! Please fork the repository and create a pull request for any improvements.

@@ -10,7 +10,7 @@ const swaggerDefinition = {
     contact: {
       name: 'RailRoad API Team',
       url: 'http://localhost:5000/api',
-      email: 'mamadou.sylla@supinfo.com',
+      email: 'mamadou.and.rede@supinfo.com',
     },
   },
   servers: [

@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import { Ticket } from '../../../models/ticketModel'
 const tickets = [
     { "user": "603d2a57e4a120001f8e4abc", "train": "603d2a57e4a120001f8e4aef", "valid": false, "booked_at": "2024-01-01T10:00:00Z" },

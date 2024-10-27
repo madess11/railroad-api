@@ -1,5 +1,3 @@
-// src/routes/trainRoutes.ts
-
 import { Router } from 'express'
 import { getTrains, createTrain, updateTrain, deleteTrain, getTrain } from '../controllers/trainController'
 import { authMiddleware } from '../middlewares/authMiddleware'

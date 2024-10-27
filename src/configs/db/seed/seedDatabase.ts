@@ -4,10 +4,6 @@ import { MONGO_URI } from '../../env'
 import { seedStationsAndTrains } from './seedStations'
 import { seedTickets } from './seedTickets'
 
-
-
-
-
 const seedAll = async () => {
     try {
         await mongoose.connect(MONGO_URI)

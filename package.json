@@ -1,7 +1,7 @@
 {
   "name": "railroad-api",
   "version": "1.0.0",
-  "description": "API for managing users, trains, stations, and tickets for RailRoad Ltd.",
+  "description": "API for managing users, trains, stations, and tickets for RailRoad.",
   "main": "server.ts",
   "scripts": {
     "start": "ts-node ./src/server.ts",

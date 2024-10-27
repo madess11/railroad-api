@@ -1,6 +1,6 @@
 import request from 'supertest'
-import app from '../app'  // Import the Express application
-import { TrainStation } from '../models/trainStationModel' // Import the station model
+import app from '../app'  
+import { TrainStation } from '../models/trainStationModel'
 import { clearDatabase, closeDatabase, connect } from '../configs/jest.setup'
 
 

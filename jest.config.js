@@ -5,7 +5,7 @@ module.exports = {
     transform: {                  // Transform files with ts-jest
       '^.+\\.tsx?$': 'ts-jest'
     },
-    moduleFileExtensions: ['ts', 'tsx', 'js'], // Recognize these file types
+    moduleFileExtensions: ['ts', 'js'], // Recognize these file types
     moduleNameMapper: {           // Handle static assets (e.g., images)
       '\\.(jpg|jpeg|png|gif)$': '<rootDir>/__mocks__/fileMock.js'
     },

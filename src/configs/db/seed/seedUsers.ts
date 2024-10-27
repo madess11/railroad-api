@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import { User } from '../../../models/userModel'
 import bcrypt from 'bcryptjs'
 
