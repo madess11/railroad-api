@@ -14,13 +14,27 @@ export const createTrain = async (req: Request, res: Response) => {
 
 // Get a list of trains
 export const getTrains = async (req: Request, res: Response) => {
-    const { start_station, end_station, limit = 10 } = req.query;
+    const { start_station, end_station, limit = 10, sort_by, sort_order = 'asc' } = req.query;
+
     try {
-        const query = {
+        const query: any = {
             ...(start_station && { start_station }),
             ...(end_station && { end_station }),
         };
-        const trains = await Train.find(query).limit(Number(limit));
+
+        // Define the sorting field and order
+        const sortOptions: any = {};
+
+        const s_by = sort_by as string
+
+        if (s_by) {
+            sortOptions[s_by] = sort_order === 'desc' ? -1 : 1;
+        }
+
+        const trains = await Train.find(query)
+            .sort(sortOptions)  // Apply sorting
+            .limit(Number(limit));  // Apply the limit
+
         res.json(trains);
     } catch (err) {
         res.status(500).json({ message: 'Error fetching trains', error: err });
