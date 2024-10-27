@@ -16,7 +16,3 @@ export const logger = winston.createLogger({
     new winston.transports.File({ filename: 'logs/combined.log' }),  // Combined logs
   ],
 });
-
-// Example of logging usage
-logger.info('Logger initialized successfully');
-logger.error('This is an error log example');

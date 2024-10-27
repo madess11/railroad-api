@@ -14,9 +14,4 @@ router.post('/', [authMiddleware, roleMiddleware('admin')], createTrain);
 router.put('/:id', [authMiddleware, roleMiddleware('admin')], updateTrain);
 router.delete('/:id', [authMiddleware, roleMiddleware('admin')], deleteTrain);
 
-// Admin routes to create, update, delete
-router.post('/', authMiddleware, createTrain);
-router.put('/:id', authMiddleware, updateTrain);
-router.delete('/:id', authMiddleware, deleteTrain);
-
 export default router;

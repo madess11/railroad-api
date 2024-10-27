@@ -8,9 +8,9 @@ import stationRoutes from './routes/stationRoutes';
 import ticketRoutes from './routes/ticketRoutes';
 import userRoutes from './routes/userRoutes';
 import { securityHeaders } from './middlewares/securityHeaders';
-// import { swaggerSpec } from './config/swaggerConfig';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './configs/swaggerConfig';
+import path from 'path';
 
 
 
@@ -26,17 +26,21 @@ app.use(cors());  // Enables CORS
 app.use(errorHandler); // Error handling middleware
 app.use(morgan('dev'));  // HTTP request logger
 
+
+// Serve static files from the 'uploads/resized' directory
+app.use('/uploads/resized', express.static(path.join(__dirname, '../uploads', 'resized')));
+
 // Routes setup
 app.use('/api/auth', authRoutes);  // Authentication routes (user login/signup)
 app.use('/api/trains', trainRoutes);  // Train-related routes
 app.use('/api/stations', stationRoutes);  // Train station-related routes
 app.use('/api/tickets', ticketRoutes);  // Ticket-related routes
+app.use('/api/users', userRoutes); // User management routes (Self and admin only)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger documentation route
 
 
-// User management routes (Admin only)
-app.use('/api/users', userRoutes);
+
 
 // Catch-all route for undefined paths
 app.use('*', (req, res) => {

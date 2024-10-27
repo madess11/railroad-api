@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getStations, createStation, updateStation, deleteStation } from '../controllers/stationController';
+import { getStations, createStation, updateStation, deleteStation, getStationById } from '../controllers/stationController';
 import { authMiddleware } from '../middlewares/authMiddleware';
 import { roleMiddleware } from '../middlewares/roleMiddleware';
 
@@ -7,6 +7,8 @@ const router = Router();
 
 // Public route
 router.get('/', getStations);
+router.get('/:id', getStationById);
+
 
 // Admin routes (Protected)
 router.post('/', [authMiddleware, roleMiddleware('admin')], createStation);

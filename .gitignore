@@ -6,6 +6,9 @@ yarn-error.log*
 package-lock.json
 .pnpm-debug.log*
 
+# Ignore everything in the uploads/resized directory
+uploads/resized/*
+
 # Logs
 logs/
 *.log

@@ -1,14 +1,17 @@
 import { Router } from 'express';
-import { bookTicket, validateTicket } from '../controllers/ticketController';
+import { bookTicket, getTickets, validateUserTicket,    } from '../controllers/ticketController';
 import { authMiddleware } from '../middlewares/authMiddleware';
-import { roleMiddleware } from '../middlewares/roleMiddleware';
+import { getUserTickets } from '../services/ticketService';
 
 const router = Router();
 
-// User route
-router.post('/book/:trainId', authMiddleware, bookTicket);
+// Public route to book a ticket
+router.post('/', authMiddleware, bookTicket);
 
-// Employee route (Protected)
-router.post('/validate/:ticketId', [authMiddleware, roleMiddleware('employee')], validateTicket);
+// Protected route to get user tickets
+router.get('/', authMiddleware, getTickets);
+
+// Admin route to validate a ticket by ID
+router.put('/:id/validate', authMiddleware, validateUserTicket);
 
 export default router;

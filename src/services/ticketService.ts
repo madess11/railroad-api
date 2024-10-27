@@ -1,18 +1,18 @@
 import { Ticket } from '../models/ticketModel';
-import { Train } from '../models/trainModel';
+import { ITicket } from '../models/ticketModel';
 
-export const bookTicket = async (userId: string, trainId: string) => {
-    const train = await Train.findById(trainId);
-    if (!train) throw new Error('Train not found');
-
-    const newTicket = new Ticket({ user: userId, train: trainId });
+// Create a new ticket
+export const createTicket = async (ticketData:  any) => {
+    const newTicket = new Ticket(ticketData);
     return newTicket.save();
 };
 
-export const validateTicket = async (ticketId: string) => {
-    const ticket = await Ticket.findById(ticketId);
-    if (!ticket) throw new Error('Ticket not found');
+// Get all tickets for a specific user
+export const getUserTickets = async (userId: string) => {
+    return Ticket.find({ user: userId }).populate('train');  // Populate train data
+};
 
-    ticket.valid = true;
-    return ticket.save();
+// Validate a ticket by its ID
+export const validateTicket = async (ticketId: string) => {
+    return Ticket.findByIdAndUpdate(ticketId, { valid: true }, { new: true });
 };

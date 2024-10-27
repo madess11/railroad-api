@@ -8,14 +8,15 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
   },
   "include": [
     "src/**/*.ts",
-    "server.ts"
+    "server.ts",
+    "src/configs/jest.setup.ts"
   ],
   "exclude": [
     "node_modules",
     "dist"
-  ]
+  ],
 }
