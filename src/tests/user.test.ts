@@ -1,7 +1,6 @@
 import request from 'supertest'
 import app from '../app'
 import { clearDatabase, closeDatabase, connect } from '../configs/jest.setup'
-// import { connect, closeDatabase, clearDatabase } from './jest.setup'
 
 beforeAll(async () => await connect())
 afterEach(async () => await clearDatabase())

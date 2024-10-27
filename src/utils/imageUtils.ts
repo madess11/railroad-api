@@ -10,7 +10,7 @@ export const resizeImage = async (filePath: string): Promise<void> => {
       .resize(200, 200)  // Resize to 200x200 pixels
       .toFile(filePath.replace(/(\.\w+)$/, '_resized$1'));  // Save resized image with "_resized" suffix
   } catch (error) {
-    throw new Error(`Failed to resize image: ${error.message}`);
+    throw new Error(`Failed to resize image: ${error }`);
   }
 };
 
